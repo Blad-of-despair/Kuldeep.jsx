@@ -145,6 +145,11 @@ const Projects = () => {
   const current = projects?.[index] || null;
   const total = projects?.length || 0;
 
+  const prevIndex = total ? (index - 1 + total) % total : 0;
+  const nextIndex = total ? (index + 1) % total : 0;
+  const prevProject = projects?.[prevIndex];
+  const nextProject = projects?.[nextIndex];
+
   return (
     <section id="projects" className={styles.projects} ref={projectsRef}>
       <div className="container">
@@ -159,7 +164,7 @@ const Projects = () => {
           <div className={`${styles.carousel} projects-anim`}>
             <div className={`${styles.card} ${styles.skeleton}`}>
               <div className={`${styles.skeletonLine} ${styles.skeletonTitle}`} />
-              <div className={styles.skeletonBlock}>
+              <div className={`${styles.skeletonBlock}`}>
                 <div className={`${styles.skeletonLine} ${styles.skeletonText}`} />
                 <div className={`${styles.skeletonLine} ${styles.skeletonText}`} />
                 <div className={`${styles.skeletonLine} ${styles.skeletonTextShort}`} />
@@ -180,6 +185,21 @@ const Projects = () => {
               >
                 <HiChevronLeft />
               </button>
+
+              {/* Left blurred preview card */}
+              {prevProject && (
+                <div
+                  className={`${styles.cardPreview} ${styles.cardLeft}`}
+                  onClick={() => goTo(index - 1, -1)}
+                  title={`Previous: ${prevProject.title}`}
+                >
+                  <div className={styles.previewTop}>
+                    <span className={styles.cardIndex}>{String(prevIndex + 1).padStart(2, '0')}</span>
+                  </div>
+                  <h4 className={styles.previewTitle}>{prevProject.title}</h4>
+                  <p className={styles.previewDesc}>{prevProject.description}</p>
+                </div>
+              )}
 
               <AnimatePresence mode="popLayout" custom={direction} initial={false}>
                 <motion.article
@@ -234,6 +254,21 @@ const Projects = () => {
                   </a>
                 </motion.article>
               </AnimatePresence>
+
+              {/* Right blurred preview card */}
+              {nextProject && (
+                <div
+                  className={`${styles.cardPreview} ${styles.cardRight}`}
+                  onClick={() => goTo(index + 1, 1)}
+                  title={`Next: ${nextProject.title}`}
+                >
+                  <div className={styles.previewTop}>
+                    <span className={styles.cardIndex}>{String(nextIndex + 1).padStart(2, '0')}</span>
+                  </div>
+                  <h4 className={styles.previewTitle}>{nextProject.title}</h4>
+                  <p className={styles.previewDesc}>{nextProject.description}</p>
+                </div>
+              )}
 
               <button
                 className={`${styles.arrow} ${styles.arrowRight}`}
