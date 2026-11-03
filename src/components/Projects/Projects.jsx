@@ -169,7 +169,7 @@ const Projects = () => {
                 <div className={`${styles.skeletonLine} ${styles.skeletonText}`} />
                 <div className={`${styles.skeletonLine} ${styles.skeletonTextShort}`} />
               </div>
-              <div className={styles.skeletonFooter}>
+              <div className={`${styles.skeletonFooter}`}>
                 <div className={`${styles.skeletonLine} ${styles.skeletonChip}`} />
                 <div className={`${styles.skeletonLine} ${styles.skeletonBtn}`} />
               </div>
@@ -188,9 +188,13 @@ const Projects = () => {
 
               {/* Left blurred preview card */}
               {prevProject && (
-                <div
+                <motion.div
+                  key={`prev-${prevProject.id}`}
                   className={`${styles.cardPreview} ${styles.cardLeft}`}
                   onClick={() => goTo(index - 1, -1)}
+                  initial={{ opacity: 0, x: -40, scale: 0.85 }}
+                  animate={{ opacity: 0.45, x: 0, scale: 0.92 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   title={`Previous: ${prevProject.title}`}
                 >
                   <div className={styles.previewTop}>
@@ -198,7 +202,7 @@ const Projects = () => {
                   </div>
                   <h4 className={styles.previewTitle}>{prevProject.title}</h4>
                   <p className={styles.previewDesc}>{prevProject.description}</p>
-                </div>
+                </motion.div>
               )}
 
               <AnimatePresence mode="popLayout" custom={direction} initial={false}>
@@ -206,10 +210,10 @@ const Projects = () => {
                   key={current.id}
                   className={styles.card}
                   custom={direction}
-                  initial={{ opacity: 0, x: direction * 90, scale: 0.97 }}
-                  animate={{ opacity: 1, x: 0, scale: 1 }}
-                  exit={{ opacity: 0, x: direction * -90, scale: 0.97 }}
-                  transition={{ duration: 0.35, ease: 'easeOut' }}
+                  initial={{ opacity: 0, x: direction * 110, scale: 0.88, filter: 'blur(6px)' }}
+                  animate={{ opacity: 1, x: 0, scale: 1, filter: 'blur(0px)' }}
+                  exit={{ opacity: 0, x: direction * -110, scale: 0.88, filter: 'blur(6px)' }}
+                  transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
                 >
                   <div className={styles.cardTop}>
                     <span className={styles.cardIndex}>
@@ -257,9 +261,13 @@ const Projects = () => {
 
               {/* Right blurred preview card */}
               {nextProject && (
-                <div
+                <motion.div
+                  key={`next-${nextProject.id}`}
                   className={`${styles.cardPreview} ${styles.cardRight}`}
                   onClick={() => goTo(index + 1, 1)}
+                  initial={{ opacity: 0, x: 40, scale: 0.85 }}
+                  animate={{ opacity: 0.45, x: 0, scale: 0.92 }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
                   title={`Next: ${nextProject.title}`}
                 >
                   <div className={styles.previewTop}>
@@ -267,7 +275,7 @@ const Projects = () => {
                   </div>
                   <h4 className={styles.previewTitle}>{nextProject.title}</h4>
                   <p className={styles.previewDesc}>{nextProject.description}</p>
-                </div>
+                </motion.div>
               )}
 
               <button
