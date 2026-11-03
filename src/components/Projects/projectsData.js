@@ -1,0 +1,38 @@
+export const projectsData = [
+  {
+    id: 'notes-vita',
+    title: 'Secure Notes App (Notes Vita V1)',
+    description: 'A full-stack notes application built with Next.js, MongoDB, and Tailwind CSS. Features secure user registration, JWT-based authentication, and personal note management.',
+    techStack: ['Next.js', 'React.js', 'Node.js', 'Express.js', 'MongoDB', 'JWT', 'Tailwind CSS'],
+    liveUrl: 'https://notesvita-v1.netlify.app/',
+    githubUrl: 'https://github.com/Blad-of-despair/Notes-app-V1',
+    featured: true,
+  },
+  {
+    id: 'focus-guard',
+    title: 'FocusGuard — Digital Wellness & Lock',
+    description: 'Digital wellness and commitment lock app built with Kotlin and Jetpack Compose. Provides unbreakable app restrictions, digital detox programs, and productivity tracking.',
+    techStack: ['Kotlin', 'Jetpack Compose', 'Material 3', 'Android SDK'],
+    liveUrl: 'https://github.com/Blad-of-despair/Focus-guard',
+    githubUrl: 'https://github.com/Blad-of-despair/Focus-guard',
+    featured: true,
+  },
+  {
+    id: 'job-api-server',
+    title: 'JobTrack API Server',
+    description: 'A robust RESTful API server for tracking job applications built with Express.js and MongoDB. Features full CRUD operations, application status tracking, and Mongoose ODM integration.',
+    techStack: ['Node.js', 'Express.js', 'MongoDB', 'Mongoose', 'REST APIs'],
+    liveUrl: 'https://github.com/Blad-of-despair/JOB-API-SERBER',
+    githubUrl: 'https://github.com/Blad-of-despair/JOB-API-SERBER',
+    featured: true,
+  },
+  {
+    id: 'ai-story-generator',
+    title: 'AI Story Generator',
+    description: 'An interactive web application built with React and Vite for generating creative AI stories with modern component styling and responsive UI design.',
+    techStack: ['React.js', 'Vite', 'Tailwind CSS', 'JavaScript'],
+    liveUrl: 'https://github.com/Blad-of-despair/AI-Story-Generator',
+    githubUrl: 'https://github.com/Blad-of-despair/AI-Story-Generator',
+    featured: true,
+  },
+];

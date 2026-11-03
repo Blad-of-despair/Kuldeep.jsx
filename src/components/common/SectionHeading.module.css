@@ -1,0 +1,35 @@
+.headingContainer {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.subtitle {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.underline {
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent);
+  margin: 0.75rem auto 0;
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.875rem;
+  }
+}
