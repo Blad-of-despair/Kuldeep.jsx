@@ -59,6 +59,21 @@ const Education = () => {
 
           <div className={`${styles.timelineItem} education-item`}>
             <div className={styles.iconWrapper}>
+              <FaGraduationCap className={styles.icon} />
+            </div>
+            <div className={styles.itemContent}>
+              <span className={styles.badge}>Class 12</span>
+              <h3 className={styles.itemTitle}>Class 12 (Higher Secondary)</h3>
+              <p className={styles.institution}>Swarnim Public School, Lucknow</p>
+              <div className={styles.details}>
+                <span className={styles.grade}>Percentage: 74%</span>
+                <span className={styles.status}>CBSE Board | PCM Stream</span>
+              </div>
+            </div>
+          </div>
+
+          <div className={`${styles.timelineItem} education-item`}>
+            <div className={styles.iconWrapper}>
               <FaCertificate className={styles.icon} />
             </div>
             <div className={styles.itemContent}>

@@ -79,8 +79,8 @@ const Contact = () => {
                 <HiMail />
               </div>
               <h3 className={styles.infoTitle}>Email</h3>
-              <a href="mailto:kuldeep.maurya@example.com" className={styles.infoText}>
-                kuldeep.maurya@example.com
+              <a href="mailto:mauryakuldeep9180@gmail.com" className={styles.infoText}>
+                mauryakuldeep9180@gmail.com
               </a>
             </div>
 
