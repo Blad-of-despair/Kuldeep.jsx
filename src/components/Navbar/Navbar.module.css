@@ -6,7 +6,7 @@
   transform: translateX(-50%);
   width: calc(100% - 4rem);
   max-width: 1200px;
-  z-index: 1000;
+  z-index: 2100;
   border-radius: 24px;
 
   /* Liquid Glass Effect - Refraction & Depth */
