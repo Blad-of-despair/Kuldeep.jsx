@@ -80,6 +80,8 @@
   align-items: center;
   gap: 2.5rem;
   position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
 /* Liquid Glass Nav Links - Interactive Elements */
@@ -93,13 +95,23 @@
   cursor: pointer;
   padding: 0.5rem 1rem;
   border-radius: 16px;
+  overflow: visible;
+}
+
+/* Ensure the nav link content stays above the glass effect */
+.navLink span {
+  position: relative;
+  z-index: 3;
 }
 
 /* Glass Effect on Hover - Fluid scaling with specular gloss */
 .navLink::before {
   content: '';
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   border-radius: 16px;
 
   /* Liquid Glass Fill - Low opacity with high blur effect */
@@ -113,9 +125,15 @@
     0 4px 15px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
 
+  /* Start small and invisible */
   transform: scale(0.85);
   opacity: 0;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform, opacity;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+
+  /* Prevent pointer events from interfering with hover */
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* Glossy highlight overlay */
@@ -157,11 +175,21 @@
   box-shadow:
     0 8px 20px rgba(99, 102, 241, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
+  transform: scale(1);
+  opacity: 1;
 }
 
 .navLink.active {
   color: #fff;
   text-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
+}
+
+/* Force immediate reset on non-hovered, non-active links */
+.navLink:not(:hover):not(.active)::before {
+  transform: scale(0.85);
+  opacity: 0;
+  transition: none !important;
 }
 
 /* Light mode nav links - adjust glass for lighter background */
