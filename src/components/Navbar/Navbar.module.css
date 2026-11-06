@@ -129,6 +129,7 @@
 
 /* Glossy highlight overlay */
 .navLink::after {
+  pointer-events: none;
   content: '';
   position: absolute;
   inset: 0;
@@ -180,7 +181,7 @@
 .navLink:not(:hover):not(.active)::before {
   transform: scale(0.8);
   opacity: 0;
-  transition: none;
+  /* transition: none; */
 }
 
 /* Light mode nav links - adjust glass for lighter background */
