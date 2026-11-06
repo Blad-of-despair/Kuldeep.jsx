@@ -10,7 +10,7 @@
   border-radius: 24px;
 
   /* Liquid Glass Effect - Refraction & Depth */
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(15, 23, 42, 0.6);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
 
@@ -18,8 +18,8 @@
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow:
     0 20px 50px -10px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.25),
-    0 1px 2px 0 rgba(255, 255, 255, 0.1);
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.1),
+    0 1px 2px 0 rgba(0, 0, 0, 0.3);
 
   transition: var(--transition);
   padding: 1.25rem 2rem;
@@ -27,13 +27,13 @@
 
 /* Light mode liquid glass */
 [data-theme="light"] .navbar {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(25px);
   -webkit-backdrop-filter: blur(25px);
-  border-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow:
     0 20px 50px -10px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.5),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.6),
     0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
@@ -44,13 +44,13 @@
   border-radius: 20px;
   box-shadow:
     0 10px 30px -10px rgba(0, 0, 0, 0.5),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
 }
 
 [data-theme="light"].scrolled {
   box-shadow:
     0 10px 30px -10px rgba(0, 0, 0, 0.1),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
 }
 
 .navContainer {
@@ -80,8 +80,6 @@
   align-items: center;
   gap: 2.5rem;
   position: relative;
-  overflow: hidden;
-  z-index: 1;
 }
 
 /* Liquid Glass Nav Links - Interactive Elements */
@@ -96,22 +94,17 @@
   padding: 0.5rem 1rem;
   border-radius: 16px;
   overflow: visible;
-}
-
-/* Ensure the nav link content stays above the glass effect */
-.navLink span {
-  position: relative;
-  z-index: 3;
+  /* Fix crawling: ensure hover is only on the specific element */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Glass Effect on Hover - Fluid scaling with specular gloss */
 .navLink::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   border-radius: 16px;
 
   /* Liquid Glass Fill - Low opacity with high blur effect */
@@ -125,13 +118,11 @@
     0 4px 15px rgba(0, 0, 0, 0.1),
     inset 0 1px 0 rgba(255, 255, 255, 0.3);
 
-  /* Start small and invisible */
-  transform: scale(0.85);
+  transform: scale(0.8);
   opacity: 0;
   will-change: transform, opacity;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.2s ease;
 
-  /* Prevent pointer events from interfering with hover */
   pointer-events: none;
   z-index: -1;
 }
@@ -185,11 +176,11 @@
   text-shadow: 0 0 15px rgba(99, 102, 241, 0.5);
 }
 
-/* Force immediate reset on non-hovered, non-active links */
+/* Reset glass effect on non-hovered, non-active links */
 .navLink:not(:hover):not(.active)::before {
-  transform: scale(0.85);
+  transform: scale(0.8);
   opacity: 0;
-  transition: none !important;
+  transition: none;
 }
 
 /* Light mode nav links - adjust glass for lighter background */
@@ -198,7 +189,7 @@
 }
 
 [data-theme="light"] .navLink::before {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.6);
   border-color: rgba(0, 0, 0, 0.1);
   box-shadow:
     0 4px 15px rgba(0, 0, 0, 0.05),
@@ -206,7 +197,7 @@
 }
 
 [data-theme="light"] .navLink:hover::before {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   box-shadow:
     0 6px 20px rgba(0, 0, 0, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
@@ -293,8 +284,10 @@
 }
 
 [data-theme="light"] .themeToggle {
-  background: rgba(255, 255, 255, 0.6);
-  border-color: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow:
     0 4px 12px rgba(0, 0, 0, 0.05),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
@@ -304,6 +297,7 @@
   box-shadow:
     0 8px 20px rgba(79, 70, 229, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transform: rotate(0deg) scale(1.1);
 }
 
 .hamburger {
